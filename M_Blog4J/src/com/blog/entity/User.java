@@ -1,14 +1,17 @@
 package com.blog.entity;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 
-@Entity
+@Entity(name="blog_user")
 public class User{
 	
 	private int userId;
@@ -23,7 +26,23 @@ public class User{
 	private String signature;
 	private int userState;
 	private int birthday;
+	private Set<SayComment> sayComments = new HashSet<SayComment>();
+	private Set<Say> says = new HashSet<Say>();
 	
+	@OneToMany(mappedBy="user")
+	public Set<SayComment> getSayComments() {
+		return sayComments;
+	}
+	public void setSayComments(Set<SayComment> sayComments) {
+		this.sayComments = sayComments;
+	}
+	@OneToMany(mappedBy="user")
+	public Set<Say> getSays() {
+		return says;
+	}
+	public void setSays(Set<Say> says) {
+		this.says = says;
+	}
 	@Id @GeneratedValue
 	public int getUserId() {
 		return userId;
