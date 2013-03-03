@@ -13,7 +13,6 @@ import javax.persistence.OneToMany;
 
 @Entity(name="blog_user")
 public class User{
-	
 	private int userId;
 	private String userName;
 	private String passWd;
@@ -28,7 +27,20 @@ public class User{
 	private int birthday;
 	private Set<SayComment> sayComments = new HashSet<SayComment>();
 	private Set<Say> says = new HashSet<Say>();
+	private Set<Album> albums = new HashSet<Album>();
+	private Set<Message> fromMessage = new HashSet<Message>();
+	private Set<Message> toMessage = new HashSet<Message>();
+	private Set<Article> articles = new HashSet<Article>();
+	private Set<ArticleComment> articleComments = new HashSet<ArticleComment>();
 	
+	
+	@OneToMany(mappedBy="user")
+	public Set<Album> getAlbums() {
+		return albums;
+	}
+	public void setAlbums(Set<Album> albums) {
+		this.albums = albums;
+	}
 	@OneToMany(mappedBy="user")
 	public Set<SayComment> getSayComments() {
 		return sayComments;
@@ -118,6 +130,34 @@ public class User{
 	}
 	public void setBirthday(int birthday) {
 		this.birthday = birthday;
+	}
+	@OneToMany(mappedBy="fromUser")
+	public Set<Message> getFromMessage() {
+		return fromMessage;
+	}
+	public void setFromMessage(Set<Message> fromMessage) {
+		this.fromMessage = fromMessage;
+	}
+	@OneToMany(mappedBy="toUser")
+	public Set<Message> getToMessage() {
+		return toMessage;
+	}
+	public void setToMessage(Set<Message> toMessage) {
+		this.toMessage = toMessage;
+	}
+	@OneToMany(mappedBy="user")
+	public Set<Article> getArticles() {
+		return articles;
+	}
+	public void setArticles(Set<Article> articles) {
+		this.articles = articles;
+	}
+	@OneToMany(mappedBy="user")
+	public Set<ArticleComment> getArticleComments() {
+		return articleComments;
+	}
+	public void setArticleComments(Set<ArticleComment> articleComments) {
+		this.articleComments = articleComments;
 	}
 	
 }

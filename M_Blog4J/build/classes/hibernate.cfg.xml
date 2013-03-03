@@ -33,6 +33,11 @@
 		<mapping class="com.blog.entity.User"/>
 		<mapping class="com.blog.entity.SayComment"/>
 		<mapping class="com.blog.entity.Say"/>
+		<mapping class="com.blog.entity.Album"/>
+		<mapping class="com.blog.entity.Photo"/>
+		<mapping class="com.blog.entity.Message"/>
+		<mapping class="com.blog.entity.Article"/>
+		<mapping class="com.blog.entity.ArticleComment"/>
     </session-factory>
 
 </hibernate-configuration>

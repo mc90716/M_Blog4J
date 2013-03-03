@@ -7,37 +7,28 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
-@Entity(name="blog_saycomment")
-public class SayComment {
+@Entity(name="blog_articlecomment")
+public class ArticleComment {
 	private int commentId;
-	private String content;
+	private String comment;
 	private User user;
-	private Date dateTime;
+	private Article article;
+	private Date commentTime;
 	private int parentId;
-	private Say say;
 	
-	@ManyToOne
-	@JoinColumn(name="sayId")
-	public Say getSay() {
-		return say;
-	}
-	public void setSay(Say say) {
-		this.say = say;
-	}
-	@Id @GeneratedValue
+	@Id
+	@GeneratedValue
 	public int getCommentId() {
 		return commentId;
 	}
 	public void setCommentId(int commentId) {
 		this.commentId = commentId;
 	}
-	
-	public String getContent() {
-		return content;
+	public String getComment() {
+		return comment;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 	@ManyToOne
 	@JoinColumn(name="userId")
@@ -47,17 +38,25 @@ public class SayComment {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public Date getDateTime() {
-		return dateTime;
+	public Date getCommentTime() {
+		return commentTime;
 	}
-	public void setDateTime(Date dateTime) {
-		this.dateTime = dateTime;
+	public void setCommentTime(Date commentTime) {
+		this.commentTime = commentTime;
 	}
 	public int getParentId() {
 		return parentId;
 	}
 	public void setParentId(int parentId) {
 		this.parentId = parentId;
+	}
+	@ManyToOne
+	@JoinColumn(name="articleId")
+	public Article getArticle() {
+		return article;
+	}
+	public void setArticle(Article article) {
+		this.article = article;
 	}
 	
 }
