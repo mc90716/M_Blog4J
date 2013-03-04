@@ -36,6 +36,7 @@ public class User{
 	private Set<ArticleComment> articleComments = new HashSet<ArticleComment>();
 	private Set<Friend> my = new HashSet<Friend>();
 	private Set<Friend> you = new HashSet<Friend>();
+	private Set<PhotoComment> photoComments = new HashSet<PhotoComment>();
 	
 	@OneToMany(mappedBy="user")
 	public Set<Album> getAlbums() {
@@ -182,6 +183,13 @@ public class User{
 	}
 	public void setYou(Set<Friend> you) {
 		this.you = you;
+	}
+	@OneToMany(mappedBy="user")
+	public Set<PhotoComment> getPhotoComments() {
+		return photoComments;
+	}
+	public void setPhotoComments(Set<PhotoComment> photoComments) {
+		this.photoComments = photoComments;
 	}
 	
 }

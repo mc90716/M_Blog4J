@@ -41,6 +41,8 @@
 		<mapping class="com.blog.entity.Favourite"/>
 		<mapping class="com.blog.entity.Category"/>
 		<mapping class="com.blog.entity.Friend"/>
+		<mapping class="com.blog.entity.PhotoComment"/>
+		<mapping class="com.blog.entity.Param"/>
     </session-factory>
 
 </hibernate-configuration>

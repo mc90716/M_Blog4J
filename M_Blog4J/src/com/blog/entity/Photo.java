@@ -1,12 +1,15 @@
 package com.blog.entity;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity(name="blog_photo")
 public class Photo {
@@ -17,6 +20,7 @@ public class Photo {
 	private int isPortrait;
 	private int isCover;
 	private Album album;
+	private Set<PhotoComment> photoComments = new HashSet<PhotoComment>();
 	
 	@ManyToOne
 	@JoinColumn(name="albumId")
@@ -62,5 +66,12 @@ public class Photo {
 	}
 	public void setAddTime(Date addTime) {
 		this.addTime = addTime;
+	}
+	@OneToMany(mappedBy="photo")
+	public Set<PhotoComment> getPhotoComments() {
+		return photoComments;
+	}
+	public void setPhotoComments(Set<PhotoComment> photoComments) {
+		this.photoComments = photoComments;
 	}
 }
