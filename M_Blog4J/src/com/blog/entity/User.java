@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 
 @Entity(name="blog_user")
@@ -25,6 +26,7 @@ public class User{
 	private String signature;
 	private int userState;
 	private int birthday;
+	private Favourite favourite;
 	private Set<SayComment> sayComments = new HashSet<SayComment>();
 	private Set<Say> says = new HashSet<Say>();
 	private Set<Album> albums = new HashSet<Album>();
@@ -32,7 +34,8 @@ public class User{
 	private Set<Message> toMessage = new HashSet<Message>();
 	private Set<Article> articles = new HashSet<Article>();
 	private Set<ArticleComment> articleComments = new HashSet<ArticleComment>();
-	
+	private Set<Friend> my = new HashSet<Friend>();
+	private Set<Friend> you = new HashSet<Friend>();
 	
 	@OneToMany(mappedBy="user")
 	public Set<Album> getAlbums() {
@@ -158,6 +161,27 @@ public class User{
 	}
 	public void setArticleComments(Set<ArticleComment> articleComments) {
 		this.articleComments = articleComments;
+	}
+	@OneToOne(mappedBy="user")
+	public Favourite getFavourite() {
+		return favourite;
+	}
+	public void setFavourite(Favourite favourite) {
+		this.favourite = favourite;
+	}
+	@OneToMany(mappedBy="my")
+	public Set<Friend> getMy() {
+		return my;
+	}
+	public void setMy(Set<Friend> my) {
+		this.my = my;
+	}
+	@OneToMany(mappedBy="you")
+	public Set<Friend> getYou() {
+		return you;
+	}
+	public void setYou(Set<Friend> you) {
+		this.you = you;
 	}
 	
 }

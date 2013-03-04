@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -17,10 +19,12 @@ public class Article {
 	private String title;
 	private String content;
 	private User user;
-	private int category;
+	private Category category;
 	private int visitorsCount;
 	private Date createTime;
 	private Set<ArticleComment> articleComments = new HashSet<ArticleComment>();
+	private Set<Favourite> favourites = new HashSet<Favourite>();
+	
 	
 	@Id
 	@GeneratedValue
@@ -50,12 +54,6 @@ public class Article {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public int getCategory() {
-		return category;
-	}
-	public void setCategory(int category) {
-		this.category = category;
-	}
 	public int getVisitorsCount() {
 		return visitorsCount;
 	}
@@ -74,5 +72,23 @@ public class Article {
 	}
 	public void setArticleComments(Set<ArticleComment> articleComments) {
 		this.articleComments = articleComments;
+	}
+	@ManyToOne
+	@JoinColumn(name="categoryId")
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+	@ManyToMany
+	@JoinTable(name="blog_favouritearticle",
+	         joinColumns={@JoinColumn(name="articleId")},
+	         inverseJoinColumns={@JoinColumn(name="favouriteId")})
+	public Set<Favourite> getFavourites() {
+		return favourites;
+	}
+	public void setFavourites(Set<Favourite> favourites) {
+		this.favourites = favourites;
 	}
 }

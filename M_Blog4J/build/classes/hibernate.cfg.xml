@@ -28,7 +28,7 @@
         <property name="format_sql">true</property>
         
         <!-- Drop and re-create the database schema on startup  -->
-        <property name="hbm2ddl.auto">update</property>
+        <property name="hbm2ddl.auto">create</property>
       
 		<mapping class="com.blog.entity.User"/>
 		<mapping class="com.blog.entity.SayComment"/>
@@ -38,6 +38,9 @@
 		<mapping class="com.blog.entity.Message"/>
 		<mapping class="com.blog.entity.Article"/>
 		<mapping class="com.blog.entity.ArticleComment"/>
+		<mapping class="com.blog.entity.Favourite"/>
+		<mapping class="com.blog.entity.Category"/>
+		<mapping class="com.blog.entity.Friend"/>
     </session-factory>
 
 </hibernate-configuration>
