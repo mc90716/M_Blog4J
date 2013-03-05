@@ -9,12 +9,8 @@
     <constant name="struts.devMode" value="true" />
 
     <package name="default" namespace="/" extends="struts-default">
-        <default-action-ref name="index" />
         <action name="index">
             <result type="redirectAction"> </result>
         </action>
     </package>
-
-    <!-- Add packages here -->
-
 </struts>

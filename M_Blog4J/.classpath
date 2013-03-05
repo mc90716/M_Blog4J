@@ -15,33 +15,5 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="H:/SSH-lib/lib/antlr-2.7.6.jar"/>
-	<classpathentry kind="lib" path="H:/SSH-lib/lib/aspectjrt.jar"/>
-	<classpathentry kind="lib" path="H:/SSH-lib/lib/aspectjweaver.jar"/>
-	<classpathentry kind="lib" path="H:/SSH-lib/lib/cglib-nodep-2.1_3.jar"/>
-	<classpathentry kind="lib" path="H:/SSH-lib/lib/common-annotations.jar"/>
-	<classpathentry kind="lib" path="H:/SSH-lib/lib/commons-collections-3.1.jar"/>
-	<classpathentry kind="lib" path="H:/SSH-lib/lib/commons-dbcp.jar"/>
-	<classpathentry kind="lib" path="H:/SSH-lib/lib/commons-fileupload-1.2.1.jar"/>
-	<classpathentry kind="lib" path="H:/SSH-lib/lib/commons-io-1.3.2.jar"/>
-	<classpathentry kind="lib" path="H:/SSH-lib/lib/commons-logging-1.1.jar"/>
-	<classpathentry kind="lib" path="H:/SSH-lib/lib/commons-pool.jar"/>
-	<classpathentry kind="lib" path="H:/SSH-lib/lib/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="H:/SSH-lib/lib/ejb3-persistence.jar"/>
-	<classpathentry kind="lib" path="H:/SSH-lib/lib/freemarker-2.3.13.jar"/>
-	<classpathentry kind="lib" path="H:/SSH-lib/lib/hibernate3.jar"/>
-	<classpathentry kind="lib" path="H:/SSH-lib/lib/hibernate-annotations.jar"/>
-	<classpathentry kind="lib" path="H:/SSH-lib/lib/hibernate-commons-annotations.jar"/>
-	<classpathentry kind="lib" path="H:/SSH-lib/lib/javassist-3.9.0.GA.jar"/>
-	<classpathentry kind="lib" path="H:/SSH-lib/lib/jta-1.1.jar"/>
-	<classpathentry kind="lib" path="H:/SSH-lib/lib/log4j-1.2.15.jar"/>
-	<classpathentry kind="lib" path="H:/SSH-lib/lib/mysql-connector-java-3.1.13-bin.jar"/>
-	<classpathentry kind="lib" path="H:/SSH-lib/lib/ognl-2.6.11.jar"/>
-	<classpathentry kind="lib" path="H:/SSH-lib/lib/slf4j-api-1.5.8.jar"/>
-	<classpathentry kind="lib" path="H:/SSH-lib/lib/slf4j-log4j12-1.5.8.jar"/>
-	<classpathentry kind="lib" path="H:/SSH-lib/lib/spring.jar"/>
-	<classpathentry kind="lib" path="H:/SSH-lib/lib/struts2-core-2.1.6.jar"/>
-	<classpathentry kind="lib" path="H:/SSH-lib/lib/struts2-spring-plugin-2.1.6.jar"/>
-	<classpathentry kind="lib" path="H:/SSH-lib/lib/xwork-2.1.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
