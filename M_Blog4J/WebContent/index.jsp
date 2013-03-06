@@ -5,12 +5,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(function(){alert("aaa");});
+	$(function() {
+		$('.demo').click(function() { // 给class为demo 的元素添加行为
+			alert("jQuery demo!");
+		});
+	});
 </script>
+
 </head>
 <body>
-	<p id="a"/>
+
+	<p class="demo">jQuery Demo</p>
+
 </body>
 </html>
