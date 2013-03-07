@@ -8,16 +8,22 @@
 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		$('.demo').click(function() { // 给class为demo 的元素添加行为
-			alert("jQuery demo!");
-		});
+		
 	});
 </script>
 
 </head>
 <body>
-
-	<p class="demo">jQuery Demo</p>
-
+	<form action="user/userAction!regUser" method="post">
+	<table border="1">
+	  <tr><td>用户名</td><td><input type="text" name="user.userName"></td></tr>
+	  <tr><td>密码</td><td><input type="password" name="user.passwd"></td></tr>
+	  <tr><td>确认密码</td><td><input type="password" name="passwd2"></td></tr>
+	  <tr><td>邮箱</td><td><input type="text" name="user.email"></td></tr>
+	  <tr><td>昵称</td><td><input type="text" name="user.displayName"></td></tr>
+	  <tr><td>个性签名</td><td><input type="text" name="user.signature"></td></tr>
+	  <tr><td><input type="submit" value="提交"></td><td><input type="button" value="取消"></td></tr>
+	</table>
+</form>
 </body>
 </html>

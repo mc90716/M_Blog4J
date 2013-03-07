@@ -8,8 +8,8 @@
     <constant name="struts.enable.DynamicMethodInvocation" value="true" />
     <constant name="struts.devMode" value="true" />
 
-    <package name="default" namespace="/" extends="struts-default">
-        <action name="index" class="com.blog.BaseAction">
+    <package name="user" namespace="/" extends="struts-default">
+        <action name="userAction" class="com.blog.action.UserAction">
             <result>result.jsp </result>
         </action>
     </package>
