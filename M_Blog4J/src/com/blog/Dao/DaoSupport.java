@@ -1,4 +1,4 @@
-package com.blog.service.base;
+package com.blog.Dao;
 
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
