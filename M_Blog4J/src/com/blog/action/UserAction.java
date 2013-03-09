@@ -1,15 +1,24 @@
 package com.blog.action;
 
+import javax.annotation.Resource;
+
 import com.blog.BaseAction;
 import com.blog.formbean.RegUserForm;
+import com.blog.service.impl.UserServiceBean;
 import com.blog.utils.StringUtil;
 
 public class UserAction extends BaseAction{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private RegUserForm user;
+	private UserServiceBean userServiceBean;
 	
 	public String regUser(){
-		System.out.println(user.getDisplayName());
+		userServiceBean.save(null);
 		return SUCCESS;
 	}
 
@@ -33,5 +42,14 @@ public class UserAction extends BaseAction{
 			//TODO “Ï≥£¥¶¿Ì
 		}
 		super.validate();
+	}
+
+	public UserServiceBean getUserServiceBean() {
+		return userServiceBean;
+	}
+	@Resource
+	public void setUserServiceBean(UserServiceBean userServiceBean) {
+		System.out.println("setUserServiceBean");
+		this.userServiceBean = userServiceBean;
 	}
 }
