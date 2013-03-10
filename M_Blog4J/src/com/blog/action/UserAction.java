@@ -18,7 +18,8 @@ public class UserAction extends BaseAction{
 	private UserServiceBean userServiceBean;
 	
 	public String regUser(){
-		userServiceBean.save(null);
+		String str = super.getMessage("error.message");
+		System.out.println("str===" + str);
 		return SUCCESS;
 	}
 
@@ -49,7 +50,7 @@ public class UserAction extends BaseAction{
 	}
 	@Resource
 	public void setUserServiceBean(UserServiceBean userServiceBean) {
-		System.out.println("setUserServiceBean");
+		//System.out.println("setUserServiceBean");
 		this.userServiceBean = userServiceBean;
 	}
 }
