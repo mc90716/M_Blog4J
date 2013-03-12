@@ -2,7 +2,6 @@ package com.blog.action;
 
 import javax.annotation.Resource;
 
-import com.blog.BaseAction;
 import com.blog.formbean.RegUserForm;
 import com.blog.service.impl.UserServiceBean;
 import com.blog.utils.StringUtil;

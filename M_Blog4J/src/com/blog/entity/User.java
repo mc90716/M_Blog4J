@@ -25,7 +25,7 @@ public class User{
 	private int userRole;
 	private String signature;
 	private int userState;
-	private int birthday;
+	private Date birthday;
 	private Favourite favourite;
 	private Set<SayComment> sayComments = new HashSet<SayComment>();
 	private Set<Say> says = new HashSet<Say>();
@@ -129,12 +129,7 @@ public class User{
 	public void setUserState(int userState) {
 		this.userState = userState;
 	}
-	public int getBirthday() {
-		return birthday;
-	}
-	public void setBirthday(int birthday) {
-		this.birthday = birthday;
-	}
+	
 	@OneToMany(mappedBy="fromUser")
 	public Set<Message> getFromMessage() {
 		return fromMessage;
@@ -190,6 +185,12 @@ public class User{
 	}
 	public void setPhotoComments(Set<PhotoComment> photoComments) {
 		this.photoComments = photoComments;
+	}
+	public Date getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
 	}
 	
 }
