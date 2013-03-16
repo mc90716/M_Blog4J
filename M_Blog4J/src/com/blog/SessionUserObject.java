@@ -4,17 +4,31 @@ import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionBindingListener;
 
 import com.blog.base._UserBeanBase;
+import com.blog.entity.User;
 
+/**
+ * Session中存放的对象
+ * @author 马超
+ *
+ */
 public class SessionUserObject extends _UserBeanBase implements HttpSessionBindingListener {
 
+	private String sessionId;
+	
+	public static SessionUserObject copyFrom(User user){
+		return null;
+	}
+	
 	@Override
-	public void valueBound(HttpSessionBindingEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	public void valueBound(HttpSessionBindingEvent e) {
+		sessionId = e.getSession().getId();
 	}
 
+	/**
+	 * 用户注销时讲Object移除，同时执行这个函数
+	 */
 	@Override
-	public void valueUnbound(HttpSessionBindingEvent arg0) {
+	public void valueUnbound(HttpSessionBindingEvent e) {
 		// TODO Auto-generated method stub
 		
 	}

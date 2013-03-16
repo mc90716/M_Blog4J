@@ -31,11 +31,13 @@ public abstract class _UserBeanBase {
 	private Timestamp lastTime;	//最后一次登录的时间
 	private String lastAddr;	//第一次注册的IP地址或者是最后一次登录的IP地址
 	
-	private int status;		//帐号状态
+	private int status;		//帐号状态，0：离线，1：在线
 	private int keepDays;		//登录资料的有效时间,单位:天
 	
 	private ContactInfo contactInfo;
-
+	
+	private int id;   //userId
+	
 	public int getAge() {
 		return age;
 	}
@@ -172,5 +174,13 @@ public abstract class _UserBeanBase {
 	
 	public void setHomePage(String homePage){
 		contactInfo.setHomePage(homePage);
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }
