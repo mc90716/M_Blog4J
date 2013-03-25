@@ -24,7 +24,7 @@ public abstract class DaoSupport<T> implements DAO<T>{
 	
 	//该注解的作用是专门注入EntityManager对象的，这是JPA的实现方式。EntityManager对象相当于HibernateTempalte，完成的作用是对实体的CRUD
 	@PersistenceContext
-	protected EntityManager em;  
+	protected EntityManager em;
 	
 	public void clear(){
 		em.clear();
@@ -88,7 +88,7 @@ public abstract class DaoSupport<T> implements DAO<T>{
 		String entityname = getEntityName(this.entityClass);
 		Query query = em.createQuery("select o from "+ entityname+ " o "+(wherejpql==null || "".equals(wherejpql.trim())? "": "where "+ wherejpql)+ buildOrderby(orderby));
 		setQueryParams(query, queryParams);
-		if(firstindex!=-1 && maxresult!=-1) 
+		if(firstindex!=-1 && maxresult!=-1)
 			query.setFirstResult(firstindex).setMaxResults(maxresult);
 		qr.setResultList(query.getResultList());
 		query = em.createQuery("select count("+ getCountField(this.entityClass)+ ") from "+ entityname+ " o "+(wherejpql==null || "".equals(wherejpql.trim())? "": "where "+ wherejpql));

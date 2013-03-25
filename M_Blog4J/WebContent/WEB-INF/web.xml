@@ -29,4 +29,18 @@
     <servlet-name>RandomImageServlet</servlet-name>
     <url-pattern>/RandomImageServlet</url-pattern>
   </servlet-mapping>
+  
+  <filter>
+    <filter-name>VisitFilter</filter-name>
+    <filter-class>com.blog.VisitFilter</filter-class>
+    <init-param>
+      <param-name>initVisitor</param-name>
+      <param-value>com.blog.InitVisitor</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>VisitFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
 </web-app>
