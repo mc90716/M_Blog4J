@@ -10,7 +10,7 @@
 
     <package name="user" namespace="/" extends="struts-default">
         <action name="userAction" class="com.blog.action.UserAction">
-            <result>result.jsp </result>
+            <result>/result.jsp </result>
         </action>
     </package>
 </struts>
