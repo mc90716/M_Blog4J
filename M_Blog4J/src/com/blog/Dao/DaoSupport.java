@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.blog.bean.QueryResult;
 import com.blog.utils.GenericsUtils;
 
+@Transactional
 public abstract class DaoSupport<T> implements DAO<T>{
 	protected Class<T> entityClass = GenericsUtils.getSuperClassGenricType(this.getClass());
 	

@@ -11,8 +11,6 @@ import javax.servlet.ServletContext;
 
 import org.apache.commons.lang.StringUtils;
 
-import com.blog.utils.StringUtil;
-
 public class BlogSecurityManager {
 	
 	private final static String file_glossary = "/WEB-INF/config/illegal_glossary.dat";
@@ -49,7 +47,7 @@ public class BlogSecurityManager {
 	 * ÅÐ¶ÏÊÇ·ñ´æÔÚÃô¸Ð´Ê»ã
 	 */
 	public static boolean existIllegalWord(String content){
-		if(StringUtil.isEmpty(content)){
+		if(StringUtils.isEmpty(content)){
 			return false;
 		}
 		for(String word : glossary){
@@ -64,7 +62,7 @@ public class BlogSecurityManager {
 	 * ×Ô¶¯½«Ãô¸Ð´Ê»ãÌæ»»³ÉXX
 	 */
 	public static String autoGlossaryFiltrate(String content){
-		if(StringUtil.isEmpty(content)){
+		if(StringUtils.isEmpty(content)){
 			return content;
 		}
 		for(String word : glossary){
@@ -78,11 +76,11 @@ public class BlogSecurityManager {
 	 * É¾³ýÃô¸Ð´Ê»ã
 	 */
 	public static String deleteIlegalWord(String content){
-		if(StringUtil.isEmpty(content)){
+		if(StringUtils.isEmpty(content)){
 			return content;
 		}
 		for(String word : glossary){
-			content = StringUtil.remove(content, word);
+			content = StringUtils.remove(content, word);
 		}
 		return content;
 	}

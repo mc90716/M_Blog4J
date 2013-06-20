@@ -13,6 +13,7 @@ public class Message {
 	private int msgId;
 	private User fromUser;
 	private User toUser;
+	private String title;
 	private String content;
 	private Date sendTime;
 	private Date readTime;
@@ -58,6 +59,12 @@ public class Message {
 	}
 	public void setToUser(User toUser) {
 		this.toUser = toUser;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 }

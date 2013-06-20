@@ -9,8 +9,10 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/x
          <property name="hibernate.hbm2ddl.auto" value="update"/>
 	     <property name="hibernate.jdbc.fetch_size" value="18"/>
 	     <property name="hibernate.jdbc.batch_size" value="10"/>
-	     <property name="hibernate.show_sql" value="false"/>
-	     <property name="hibernate.format_sql" value="false"/> 
+	     <property name="hibernate.show_sql" value="true"/>
+	     <property name="hibernate.format_sql" value="true"/> 
+	     <property name="connection.useUnicode" value="true"/>
+         <property name="connection.characterEncoding" value="UTF-8"/>
       </properties>
   </persistence-unit>
 </persistence>

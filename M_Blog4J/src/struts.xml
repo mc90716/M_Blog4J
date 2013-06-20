@@ -5,12 +5,145 @@
 
 <struts>
 
-    <constant name="struts.enable.DynamicMethodInvocation" value="true" />
-    <constant name="struts.devMode" value="true" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.devMode" value="true" />
 
-    <package name="user" namespace="/" extends="struts-default">
-        <action name="userAction" class="com.blog.action.UserAction">
-            <result>/result.jsp </result>
-        </action>
-    </package>
+	<package name="user" namespace="/" extends="json-default">
+
+
+		<action name="adminUserAction" class="com.blog.action.AdminUserAction">
+			<result name="adminLog">/admin/login.jsp</result>
+			<result name="adminLogin">/background/admin_index.jsp</result>
+			<result name="showAllUserByPage">/background/user/userList.jsp</result>
+			<result name="lockUser" type="json"></result>
+			<result name="unLockUser" type="json"></result>
+			<result name="delMessage" type="redirectAction">adminUserAction!showAllMessageByPage</result>
+			<result name="showAllMessageByPage">/background/user/messageList.jsp</result>
+			<result name="showAllFavouriteByPage">/background/user/favouriteList.jsp</result>
+			<result name="delFavourite" type="redirectAction">adminUserAction!showAllFavouriteByPage</result>
+			<result name="showAllFriendsByPage">/background/user/friendList.jsp</result>
+			<result name="delFriend" type="redirectAction">adminUserAction!showAllFriendsByPage</result>
+			<result name="searchUser">/background/user/userList.jsp</result>
+			<result name="searchMessage">/background/user/messageList.jsp</result>
+			<result name="searchRelationship">/background/user/friendList.jsp</result>
+		</action>
+		
+		
+		<action name="tagCloudAction" class="com.blog.action.AdminTagCloudAction">
+			<result>/background/common/tagList.jsp</result>
+			<result name="addTag" type="redirectAction">tagCloudAction</result>
+		</action>
+		
+		
+		<action name="adminColumnAction" class="com.blog.action.AdminColumnAction">
+			<result name="showAllColumnByPage">/background/column/columnList.jsp</result>
+			<result name="delColumn" type="redirectAction">adminColumnAction!showAllColumnByPage</result>
+			<result name="searchColumn">/background/column/columnList.jsp</result>
+			<result name="recommendColumn" type="redirectAction">adminColumnAction!showAllColumnByPage</result>
+			<result name="cancelRecommendColumn" type="redirectAction">adminColumnAction!showAllColumnByPage</result>
+		</action>
+		
+
+		<action name="adminArticleAction" class="com.blog.action.AdminArticleAction">
+			<result name="showAllArticleByPage">/background/article/articleList.jsp</result>
+			<result name="showALlHotArticleBtPage">/background/article/hotArticleList.jsp</result>
+			<result name="showAllCommentByPage">/background/article/articleCommentList.jsp</result>
+			<result name="deleteArticle" type="redirectAction">adminArticleAction!showAllArticleByPage</result>
+			<result name="deleteComment" type="redirectAction">adminArticleAction!showAllCommentByPage</result>
+			<result name="cancelRecommendArticle" type="redirectAction">adminArticleAction!showALlHotArticleBtPage</result>
+			<result name="recommendArticle" type="json"></result>
+			<result name="searchArticle">/background/article/articleList.jsp</result>
+			<result name="searchCommentByComment">/background/article/articleCommentList.jsp</result>
+			<result name="searchNull" type="redirectAction">adminArticleAction!showAllArticleByPage</result>
+			<result name="showOneArticle">/background/article/viewArticle.jsp</result>
+		</action>
+
+
+
+
+
+
+
+
+
+		<action name="blogAction" class="com.blog.action.BlogAction">
+			<result>/index.jsp</result>
+			<result name="showCategoryArticle">/index.jsp</result>
+			<result name="showHomeCenter">/homeFunction/homeCenter.jsp</result>
+			<result name="searchResult">/index.jsp</result>
+		</action>
+		
+		<action name="favouriteAction" class="com.blog.action.FavouriteAction">
+			<result name="showAllFavourites">/homeFunction/favouriteCenter.jsp</result>
+			<result name="deleteFavourite" type="redirectAction">favouriteAction!showAllFavourites</result>
+		</action>
+		
+		
+		
+		<action name="relationshipAction" class="com.blog.action.RelationshipAction">
+			<result>/homeFunction/relationCenter.jsp</result>
+			<result name="cancelAttention" type="redirectAction">relationshipAction</result>
+		</action>
+		
+		<action name="messageAction" class="com.blog.action.MessageAction">
+			<result name="leaveMessage" type="json"></result>
+			<result name="saveMessage" type="redirectAction">userAction!viewOtherSpace</result>
+			<result name="viewAllMessage">/homeFunction/wordCenter.jsp</result>
+			<result name="deleteMessage">/homeFunction/wordCenter.jsp</result>
+			<result name="replyMessageView">/homeFunction/replyWord.jsp</result>
+			<result name="replyMessage" type="redirectAction">userAction!viewOtherSpace</result>
+		</action>
+		
+		
+		<action name="columnAction" class="com.blog.action.ColumnAction">
+			<result>/ColumnBlog.jsp</result>
+			<result name="showCategoryArticle">/ColumnBlog.jsp</result>
+			<result name="viewColumnBlog">/homeFunction/viewCenter.jsp</result>
+		</action>
+		
+		<action name="hotArticleAction" class="com.blog.action.HotArticleAction">
+			<result name="showHotArticle">/CategoryBlog.jsp</result>
+		</action>
+		
+		<action name="blogColumnAction" class="com.blog.action.BlogColumnAction">
+			<result type="redirectAction" name="addBlogColumn">articleAction!viewAllArticle</result>
+			<result name="writeArticleToColumn">/homeFunction/blog/addToColumn.jsp</result>
+			<result type="redirectAction" name="addArticleToCloumn">articleAction!viewAllArticle</result>
+			<result type="redirectAction" name="deleteArticleOfColumn">articleAction!viewAllArticle</result>
+		</action>
+		
+
+		<action name="userAction" class="com.blog.action.UserAction">
+			<result type="json" name="checkUserResult"></result>
+			<result name="randomImg">/ValidateCodeServlet</result>
+			<result type="redirectAction" name="home">blogAction!showHomeCenter</result>
+			<result type="json" name="logResult"></result>
+			<result type="redirectAction" name="logout">blogAction</result>
+			<result name="viewOtherSpace">/homeFunction/viewCenter.jsp</result>
+			<result type="json" name="payAttention"></result>
+			<result name="register">/register.jsp</result>
+		</action>
+
+		<action name="articleAction" class="com.blog.action.ArticleAction">
+			<result name="manageAllArticle">/homeFunction/blogCenter.jsp</result>
+			<result name="viewMyArticle">/homeFunction/article.jsp</result>
+			<result name="viewArticle">viewArticle.jsp</result>
+			<result name="getArticleByPage" type="json">
+				<param name="root">message</param>
+			</result>
+			<result name="getTotalPage" type="json"></result>
+			<result name="collectArticle" type="json"></result>
+			<result name="editArticle">/homeFunction/blog/editBlog.jsp</result>
+			<result name="updateArticle">/homeFunction/blogCenter.jsp</result>
+			<result name="deleteArticle">/homeFunction/blogCenter.jsp</result>
+			<result name="shiftDelArticle">/homeFunction/blogCenter.jsp</result>
+			<result name="cancelDelArticle">/homeFunction/blogCenter.jsp</result>
+		</action>
+
+		<action name="articleCommentAction" class="com.blog.action.ArticleCommentAction">
+			<result name="addArticleComment">/homeFunction/article.jsp</result>
+			<result name="deleteComment" type="redirectAction">articleAction!viewAllArticle</result>
+		</action>
+
+	</package>
 </struts>

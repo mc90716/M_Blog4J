@@ -15,11 +15,14 @@ import com.blog.BlogSecurityManager;
  */
 public class Blog_ActionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private String encoding;
        
 	@Override
 	public void init() throws ServletException {
 		ServletContext sc = getServletContext();
 		BlogSecurityManager.init(sc);      //安全控制，初始化敏感信息的列表
+		encoding = getInitParameter("encoding");
 		super.init();
 	}
 	

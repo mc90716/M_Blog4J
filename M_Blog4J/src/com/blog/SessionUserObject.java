@@ -11,7 +11,7 @@ import com.blog.entity.User;
  * @author Âí³¬
  *
  */
-public class SessionUserObject extends _UserBeanBase implements HttpSessionBindingListener {
+public class SessionUserObject extends User implements HttpSessionBindingListener {
 
 	private String sessionId;
 	
@@ -31,6 +31,14 @@ public class SessionUserObject extends _UserBeanBase implements HttpSessionBindi
 	public void valueUnbound(HttpSessionBindingEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public String getSessionId() {
+		return sessionId;
+	}
+
+	public void setSessionId(String sessionId) {
+		this.sessionId = sessionId;
 	}
 
 }

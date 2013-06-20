@@ -1,12 +1,17 @@
 package com.blog.entity;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 @Entity(name="blog_articlecomment")
 public class ArticleComment {
 	private int commentId;
@@ -14,7 +19,8 @@ public class ArticleComment {
 	private User user;
 	private Article article;
 	private Date commentTime;
-	private int parentId;
+	private ArticleComment parentId;
+	private Set<ArticleComment> children = new HashSet<ArticleComment>();
 	
 	@Id
 	@GeneratedValue
@@ -30,7 +36,7 @@ public class ArticleComment {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="userId")
 	public User getUser() {
 		return user;
@@ -44,19 +50,29 @@ public class ArticleComment {
 	public void setCommentTime(Date commentTime) {
 		this.commentTime = commentTime;
 	}
-	public int getParentId() {
-		return parentId;
-	}
-	public void setParentId(int parentId) {
-		this.parentId = parentId;
-	}
-	@ManyToOne
+	
+	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="articleId")
 	public Article getArticle() {
 		return article;
 	}
 	public void setArticle(Article article) {
 		this.article = article;
+	}
+	@ManyToOne
+	@JoinColumn(name="parentId")
+	public ArticleComment getParentId() {
+		return parentId;
+	}
+	public void setParentId(ArticleComment parentId) {
+		this.parentId = parentId;
+	}
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="parentId")
+	public Set<ArticleComment> getChildren() {
+		return children;
+	}
+	public void setChildren(Set<ArticleComment> children) {
+		this.children = children;
 	}
 	
 }

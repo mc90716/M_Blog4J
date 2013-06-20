@@ -25,14 +25,17 @@ public class RandomImageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println("生成随机数字图片");
+		this.doPost(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String randString = random();
 		session.setAttribute(Globals.RANDOM_LOGIN_KEY,randString);
+		//request.getRequestDispatcher("register.jsp").forward(request, response);
 		render(randString,response.getOutputStream());
+		
 	}
 	/**
 	 * 生成四位的随机数
@@ -63,4 +66,9 @@ public class RandomImageServlet extends HttpServlet {
         g.drawString(num,2,13);
         	ImageIO.write(bi, "png", out);
     }
+    
+ /*   public static void main(String[] args) throws IOException {
+		FileOutputStream fos = new FileOutputStream("D:\\1234.png");
+		render("1234", fos);
+	}*/
 }

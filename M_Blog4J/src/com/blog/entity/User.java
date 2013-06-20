@@ -1,19 +1,25 @@
 package com.blog.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.blog.enumeration.UserState;
+
 
 @Entity(name="blog_user")
-public class User{
+public class User implements Serializable{
 	private int userId;
 	private String userName;
 	private String passWd;
@@ -22,11 +28,13 @@ public class User{
 	private String HomePage;
 	private String Portrait;
 	private Date regTime;
-	private int userRole;
+	private int userRole;  //1==网站管理员、0==普通用户,-1用户被锁定
 	private String signature;
-	private int userState;
-	private Date birthday;
-	private Favourite favourite;
+	private UserState userState; //0==在线、1隐身、2==离线
+	//private Date birthday;
+	private int keepDays;  //密码保存时间
+	private String lastAddr; //最后登录IP地址
+	private Set<Favourite> favourites = new HashSet<Favourite>();
 	private Set<SayComment> sayComments = new HashSet<SayComment>();
 	private Set<Say> says = new HashSet<Say>();
 	private Set<Album> albums = new HashSet<Album>();
@@ -37,6 +45,7 @@ public class User{
 	private Set<Friend> my = new HashSet<Friend>();
 	private Set<Friend> you = new HashSet<Friend>();
 	private Set<PhotoComment> photoComments = new HashSet<PhotoComment>();
+	private Set<BlogColumn> blogColumns = new HashSet<BlogColumn>();
 	
 	@OneToMany(mappedBy="user")
 	public Set<Album> getAlbums() {
@@ -72,7 +81,7 @@ public class User{
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	@Column(length=10)
+	@Column(length=40)
 	public String getPassWd() {
 		return passWd;
 	}
@@ -123,12 +132,6 @@ public class User{
 	public void setSignature(String signature) {
 		this.signature = signature;
 	}
-	public int getUserState() {
-		return userState;
-	}
-	public void setUserState(int userState) {
-		this.userState = userState;
-	}
 	
 	@OneToMany(mappedBy="fromUser")
 	public Set<Message> getFromMessage() {
@@ -158,13 +161,7 @@ public class User{
 	public void setArticleComments(Set<ArticleComment> articleComments) {
 		this.articleComments = articleComments;
 	}
-	@OneToOne(mappedBy="user")
-	public Favourite getFavourite() {
-		return favourite;
-	}
-	public void setFavourite(Favourite favourite) {
-		this.favourite = favourite;
-	}
+	
 	@OneToMany(mappedBy="my")
 	public Set<Friend> getMy() {
 		return my;
@@ -186,11 +183,37 @@ public class User{
 	public void setPhotoComments(Set<PhotoComment> photoComments) {
 		this.photoComments = photoComments;
 	}
-	public Date getBirthday() {
-		return birthday;
+	public int getKeepDays() {
+		return keepDays;
 	}
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
+	public void setKeepDays(int keepDays) {
+		this.keepDays = keepDays;
 	}
-	
+	public String getLastAddr() {
+		return lastAddr;
+	}
+	public void setLastAddr(String lastAddr) {
+		this.lastAddr = lastAddr;
+	}
+	@Enumerated(value=EnumType.STRING)
+	public UserState getUserState() {
+		return userState;
+	}
+	public void setUserState(UserState userState) {
+		this.userState = userState;
+	}
+	@OneToMany(mappedBy="user")
+	public Set<BlogColumn> getBlogColumns() {
+		return blogColumns;
+	}
+	public void setBlogColumns(Set<BlogColumn> blogColumns) {
+		this.blogColumns = blogColumns;
+	}
+	@OneToMany(mappedBy="user")
+	public Set<Favourite> getFavourites() {
+		return favourites;
+	}
+	public void setFavourites(Set<Favourite> favourites) {
+		this.favourites = favourites;
+	}
 }

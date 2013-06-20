@@ -1,0 +1,61 @@
+#bg{ display: none;  position: absolute;  top: 0%;  left: 0%; 
+width: 100%;  height: 100%;  background-color: black;  z-index:1001;  
+-moz-opacity: 0.7;  opacity:.70;  filter: alpha(opacity=70);}
+ 
+#login{display: none;  position: absolute; top:100px; left:500px;
+width: 330px;  height: 197px; border: 8px solid #E8E9F7;  background-color: white;
+z-index:1002;  overflow: auto;}
+
+.close{float:right;}
+
+a.btn_login {
+    background: url("../images/pic_button01.gif") no-repeat scroll left top transparent;
+    cursor: pointer;
+    display: inline-block;
+    height: 42px;
+    line-height: 42px;
+    margin-right: 10px;
+    padding-left: 20px;
+    text-decoration: none;
+    width: auto;
+	margin-left:30px;
+}
+
+
+a.btn_login span {
+    background: url("../images/pic_button01.gif") no-repeat scroll right top transparent;
+    color: #FFFFFF;
+    display: inline-block;
+    font-family: ºÚÌå;
+    font-size: 20px;
+    font-weight: normal;
+    height: 42px;
+    line-height: 42px;
+    padding-right: 20px;
+}
+
+table td .inputbox {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CACACA;
+	border-radius:4px 4px 4px 4px;
+    color: #333333;
+    display: inline;
+    height: 18px;
+    line-height: 18px;
+    margin-right: 5px;
+    padding: 5px;
+    vertical-align: middle;
+    width: 180px;
+}
+
+.font_red {
+    color: #FF0000;
+    font-size: 12px;
+}
+
+.register{font-size:12px;}
+
+.register_a{text-decoration:none; color:#777777;}
+.register_a:hover{text-decoration:underline;}
+
+.inputbox{font-size:12px;}

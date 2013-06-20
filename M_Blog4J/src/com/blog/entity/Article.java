@@ -4,14 +4,21 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import com.blog.enumeration.ArticleType;
 
 @Entity(name="blog_article")
 public class Article {
@@ -21,10 +28,13 @@ public class Article {
 	private User user;
 	private Category category;
 	private int visitorsCount;
+	private int delFlag;   //1 代表正常，0代表回收站，-1代表推荐文章
 	private Date createTime;
 	private Set<ArticleComment> articleComments = new HashSet<ArticleComment>();
 	private Set<Favourite> favourites = new HashSet<Favourite>();
 	
+	private ArticleType articleType;
+	private BlogColumn blogColumn;
 	
 	@Id
 	@GeneratedValue
@@ -40,6 +50,7 @@ public class Article {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	@Lob
 	public String getContent() {
 		return content;
 	}
@@ -66,7 +77,7 @@ public class Article {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
-	@OneToMany(mappedBy="article")
+	@OneToMany(mappedBy="article",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	public Set<ArticleComment> getArticleComments() {
 		return articleComments;
 	}
@@ -90,5 +101,27 @@ public class Article {
 	}
 	public void setFavourites(Set<Favourite> favourites) {
 		this.favourites = favourites;
+	}
+	@Enumerated(value=EnumType.STRING)
+	public ArticleType getArticleType() {
+		return articleType;
+	}
+	public void setArticleType(ArticleType articleType) {
+		this.articleType = articleType;
+	}
+	
+	@ManyToOne
+	@JoinColumn(name="columnId")
+	public BlogColumn getBlogColumn() {
+		return blogColumn;
+	}
+	public void setBlogColumn(BlogColumn blogColumn) {
+		this.blogColumn = blogColumn;
+	}
+	public int getDelFlag() {
+		return delFlag;
+	}
+	public void setDelFlag(int delFlag) {
+		this.delFlag = delFlag;
 	}
 }
